@@ -1,0 +1,96 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+#board {
+    background-image: url("./background.jpg");
+}
+
+#startScreen, #gameOverScreen, #offlineScreen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    border-radius: 20px;
+}
+
+#startScreen h1, #gameOverScreen h1, #offlineScreen h1 {
+    font-size: 36px;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+#startScreen p, #gameOverScreen p, #offlineScreen p {
+    font-size: 26px;
+    margin: 10px 20px;
+    line-height: 1.2;
+}
+
+#startButton, #installButton {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 36px;
+    font-family: sans-serif;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 240px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+#startButton:hover, #installButton:hover {
+    background-color: darkgreen;
+}
+
+#gameOverScreen {
+    display: none; 
+}
+
+#restartButton {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 36px;
+    font-family: sans-serif;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 240px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+#restartButton:hover {
+    background-color: #e0e0e0;
+}
+
+#offlineScreen {
+    display: none; 
+}

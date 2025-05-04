@@ -1,0 +1,16 @@
+{
+    "name": "Flappy Fish",
+    "short_name": "Flappy Fish",
+    "description": "A fun game where you help a fish swim through pipes!",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#f0f0f0",
+    "theme_color": "#000000",
+    "icons": [
+        {
+            "src": "/images.png",
+            "sizes": "51x36",
+            "type": "image/png"
+        }
+    ]
+}

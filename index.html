@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Flappy Fish</title>
+        <link rel="stylesheet" href="flappyfish.css">
+        <link rel="manifest" href="manifest.json">
+        <script src="flappyfish.js"></script>
+    </head>
+    <body>
+        <canvas id="board"></canvas>
+        <div id="startScreen">
+            <h1>Flappy Fish</h1>
+            <p>Help the fish swim through the pipes!</p>
+            <p>Avoid hitting them or you'll lose!</p>
+            <p>Tap or press space to swim!</p>
+            <button id="startButton">Start Game</button>
+            <button id="installButton" style="display: none;">Install App</button>
+        </div>
+        <div id="gameOverScreen">
+            <h1>Fish Over</h1>
+            <p id="finalScore">Your Score: 0</p>
+            <button id="restartButton">Restart</button>
+        </div>
+        <div id="offlineScreen" style="display: none;">
+            <h1>No Internet</h1>
+            <p>Please check your internet connection and try again.</p>
+        </div>
+        <audio id="backgroundMusic" loop>
+            <source src="./bgm_mario.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="jumpSound">
+            <source src="./jump.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="gameOverSound">
+            <source src="./gameover.mp3" type="audio/mpeg">
+        </audio>
+        <script>
+            let deferredPrompt;
+            const installButton = document.getElementById('installButton');
+
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                installButton.style.display = 'block';
+                installButton.addEventListener('click', () => {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        deferredPrompt = null;
+                        installButton.style.display = 'none';
+                    });
+                });
+            });
+
+            window.addEventListener('appinstalled', () => {
+                installButton.style.display = 'none';
+            });
+
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('sw.js').catch((error) => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+                });
+            }
+        </script>
+    </body>
+</html>
